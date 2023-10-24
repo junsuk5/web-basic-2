@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    /* 서로 다른 배경색을 지정하는 클래스 */
+    .highlight-cell1 {
+      background-color: yellow;
+    }
+
+    .highlight-cell2 {
+      background-color: green;
+    }
+
+    .highlight-cell3 {
+      background-color: blue;
+    }
+
+    .highlight-cell4 {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <table style="width: 20%">
+    <tr>
+      <td class="highlight-cell1" colspan="2">1</td>
+      <td class="highlight-cell2" rowspan="4">2</td>
+    </tr>
+    <tr>
+      <td rowspan="4" class="highlight-cell4">4</td>
+      <td rowspan="3"><img src="아이유.jpeg" width="100"><br></td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+      <td class="highlight-cell3" colspan="2">3</td>
+    </tr>
+  </table>
+</body>
+
+</html>
