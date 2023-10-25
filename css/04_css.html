@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,12 @@
     div {
       border: 1px solid red;
     }
+
     /* id 셀렉터 (앞에 # 붙이면 됨) */
     #div1 {
       background-color: aqua;
     }
+
     #div2 {
       background-color: yellow;
     }
@@ -21,13 +24,24 @@
     .group1 {
       background-color: blue;
     }
+
+    .text-color-white {
+      text-indent: 60px;
+      text-transform: capitalize;
+      text-decoration: underline;
+      text-align: end;
+      color: white;
+      font-size: 50px;
+    }
   </style>
 </head>
+
 <body>
-  <div class="group1">hello</div>
+  <div class="group1 text-color-white">hello</div>
   <span class="group1">world</span>
 
   <div id="div1">hello</div>
   <div id="div2">world</div>
 </body>
+
 </html>
