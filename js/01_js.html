@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function myAlert() {
+      alert('월드');
+    }
+  </script>
+
+  <!-- external 방식 -->
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <!-- inline 방식 -->
+  <div onclick="alert('월드')">hello</div>
+
+  <!-- embbed 방식 -->
+  <div onclick="myAlert()">embbed</div>
+
+  <input type="button" value="클릭" onclick="myExternalAlert()">
+</body>
+
+</html>
