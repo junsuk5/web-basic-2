@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function inputNumber() {
+      let num = prompt("숫자를 입력하시오");
+      console.log(num);
+      if (!isNaN(num)) {
+        // 1 ~ 100 : 1 < x < 100
+        // if (1 <= num && num <= 100)
+
+        // // ~ 1 or 100 ~ : x < 1 or 100 < x
+        // if (num < 1 || 100 < num) 
+
+        if (num < 1 || num > 100) {
+          alert('1 이상 100 이하를 넣어주세요');
+        } else {
+          for (let i = 1; i <= 100; i++) {
+            console.log(i);
+          }
+          alert('완료되었습니다.');
+        }
+      } else {
+        alert('숫자를 입력해주세요');
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <button onclick="inputNumber()">number</button>
+</body>
+
+</html>
