@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box1 {
+      width: 100px;
+      height: 100px;
+      background-color: aqua;
+    }
+
+    .bg-red {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+    }
+
+    .bg-blue {
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <button onclick="addText()">추가</button>
+
+  <div id="box1" onmouseover="mouseOver()" onmouseout="mouseOut()">box1</div>
+  <div class="bg-red">1</div>
+  <div id="text"></div>
+  <div class="bg-red">2</div>
+
+  <script>
+    const box1 = document.getElementById('box1');
+
+    function mouseOut() {
+      box1.style.backgroundColor = 'red';
+      console.log('mouseOut');
+    }
+
+    function mouseOver() {
+      box1.style.backgroundColor = 'yellow';
+      console.log('mouseOver');
+    }
+
+    function addText() {
+      const textDiv = document.getElementById('text');
+      textDiv.innerHTML = '<h1>Hello</h1>';
+    }
+
+  </script>
+</body>
+
+</html>
