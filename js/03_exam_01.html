@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script>
+    function log(name) {
+      console.log(name);
+      alert(`${name}님 안녕하세요`);
+    }
+
     function exam01() {
       // 1. 이름을 입력 받고
       let name = prompt('이름을 입력하세요');
@@ -15,13 +20,11 @@
         name = prompt('입력해주세요');
 
         if (name !== null && name !== '') {
-          console.log(name);
-          alert(`${name}님 안녕하세요`);
+          log(name);
         }
       } else {
         // 3. 이름이 입력 되었을때 로그에 이름을 띄우고 경고창으로 ‘누구누구님 안녕하세요.’ 를 띄워 주세요.
-        console.log(name);
-        alert(`${name}님 안녕하세요`);
+        log(name);
       }
     }
 
