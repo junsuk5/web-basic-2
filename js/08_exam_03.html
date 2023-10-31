@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .selected {
+      background-color: white;
+      border: 1px solid black;
+      width: 100px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      display: inline-block;
+    }
+
+    .normal {
+      color: white;
+      background-color: grey;
+      border: 1px solid black;
+      width: 100px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <span class="normal" onclick="select(this)">html</span>
+  <span class="normal" onclick="select(this)">css</span>
+  <span class="normal" onclick="select(this)">javascript</span>
+
+  <script>
+    const buttons = document.getElementsByTagName('span');
+
+    function select(element) {
+      for (let i = 0; i < buttons.length; i++) {
+        const button = buttons[i];
+        if (button === element) {
+          button.className = 'selected';
+        } else {
+          button.className = 'normal';
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
