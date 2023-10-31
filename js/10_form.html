@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form name="myForm">
+    <input type="text" name="name">
+
+    <input type="checkbox" name="man" id="man">
+    <label for="man">남</label>
+
+    <input type="checkbox" name="woman" id="woman">
+    <label for="woman">여</label>
+  </form>
+
+  <script>
+    const womanCheck = document.forms['myForm']['woman'];
+    womanCheck.checked = true;
+  </script>
+</body>
+
+</html>
