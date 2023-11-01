@@ -21,10 +21,15 @@
       const div1 = document.getElementById('div1');
       div1.style.backgroundColor = 'red';
     }
+
+    // onload 와 동일한 효과
+    $(function () {
+      load();
+    });
   </script>
 </head>
 
-<body onload="load()">
+<body>
   <div id="div1">div1</div>
 </body>
 
