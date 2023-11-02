@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+
+  <style>
+    #div1 {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background-color: aqua;
+    }
+  </style>
+
+  <script>
+    $(function () {
+      $('#div1').click(function () {
+        $(this).css('background-color', 'red');
+      });
+
+      $('#hideButton').click(function () {
+        $('#div1').hide('slow');
+      });
+
+      $('#showButton').click(function () {
+        $('#div1').show(2000, function () {
+          $(this).animate({ left: '100px' })
+            .animate({
+              width: '150px',
+              height: '150px'
+            });
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="div1">div1</div>
+
+  <button id="hideButton">hide</button>
+  <button id="showButton">show</button>
+
+  <br><br>
+
+  <input type="text" id="textField">
+  <button id="textInputButton">text 삽입</button>
+  <button id="htmlInputButton">html 삽입</button>
+
+  <div id="result">결과 : </div>
+
+  <script>
+    $('#textInputButton').click(function () {
+      console.log($('#textField').val());
+
+      const text = $('#textField').val();
+
+      // $('#result').text(text);
+      $('#result').append(text);
+    });
+
+    $('#htmlInputButton').click(function () {
+      console.log($('#textField').val());
+
+      const text = $('#textField').val();
+
+      $('#result').html(text);
+    });
+  </script>
+</body>
+
+</html>
