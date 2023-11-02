@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+
+  <style>
+    .facebook {
+      width: 200px;
+    }
+
+    .header {
+      color: white;
+      background-color: #1350a0;
+      padding: 8px;
+    }
+
+    .contents {
+      background-color: rgb(220, 220, 220);
+      padding: 8px;
+    }
+
+    .contents-item {
+      margin: 8px;
+      padding: 4px;
+      background-color: white;
+    }
+
+    .contents-item-name {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="facebook">
+    <div class="header">
+      최도근님, 안녕하세요?
+    </div>
+    <div class="contents">
+      페이스북 색감따라하기
+      <div class="contents-item">
+        <span class="contents-item-name">박지성</span> SBS에서 월드컵보세요!
+      </div>
+      <div class="contents-item">
+        <span class="contents-item-name">안정환</span> MBC죠...
+      </div>
+      <div class="contents-item">
+        <span class="contents-item-name">이영표</span> KBS는 수신료의 가치를..
+      </div>
+    </div>
+
+    <input type="text" id="contentTextField">
+    <button id="submit">등록</button>
+  </div>
+
+  <script>
+    $('#submit').click(function () {
+      const newContent = $('#contentTextField').val();
+
+      $('.contents').append(`<div class="contents-item">
+        <span class="contents-item-name">홍길동</span> ${newContent}
+      </div>`);
+
+      $('#contentTextField').val('').focus();
+    });
+  </script>
+</body>
+
+</html>
