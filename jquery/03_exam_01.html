@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .big-text {
+      font-size: xx-large;
+    }
+
+    .center {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" id="textField">
+  <button id="inputButton">입력</button>
+
+  <!-- 가운데 크게 텍스트를 표시해 주고 -->
+  <div id="container" class="center">
+    <div id="result" class="big-text">big text</div>
+    <!-- 바로 아래에 빨강 / 파랑 / 초록 글자가 쓰여진 버튼이 생긴다. -->
+    <button onclick="changeColor('빨강', 'red')">빨강</button>
+    <button onclick="changeColor('파랑', 'blue')">파랑</button>
+    <button onclick="changeColor('초록', 'green')">초록</button>
+    <button onclick="changeColor('노랑', 'yellow')">노랑</button>
+    <button onclick="changeColor('몰라', '#123456')">몰라</button>
+  </div>
+
+  <script>
+    // 텍스트 값을 입력 받고
+    const inputButton = document.getElementById('inputButton');
+    const textField = document.getElementById('textField');
+    const resultText = document.getElementById('result');
+    const container = document.getElementById('container');
+
+    container.style.visibility = 'hidden';
+
+    inputButton.addEventListener('click', function () {
+      console.log(textField.value);
+
+      const text = textField.value;
+
+      // 값이 없으면 “텍스트값을 입력해 주세요” 경고창을 띄우고
+      if (text === '') {
+        alert('텍스트값을 입력해 주세요');
+      } else {
+        // 값이 있으면 가운데 크게 텍스트를 표시해 주고
+        resultText.textContent = text;
+        textField.value = '';
+
+        container.style.visibility = 'visible';
+      }
+    });
+
+    // 빨강 파랑 초록 이 쓰여진 버튼을 누르면
+    // “무슨무슨 색으로 변경됩니다.” 라고 경고창이 뜨면서
+    // 입력된 텍스트의 색이 변경되게 해봅시다.
+    function changeColor(colorText, color) {
+      alert(`${colorText} 색으로 변경됩니다.`);
+
+      resultText.style.color = color;
+    }
+
+
+  </script>
+</body>
+
+</html>
