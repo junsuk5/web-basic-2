@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- jquery cdn -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+
+  <style>
+    #stage {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+    }
+
+    #player {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      bottom: 10px;
+      left: 10px;
+    }
+
+    #enemy {
+      position: absolute;
+      width: 40px;
+      bottom: 10px;
+      right: 10px;
+      transform: scaleX(-1);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- div#stage>img#player -->
+  <div id="stage">
+    <img id="player" src="asset/mario.png" alt="">
+    <img id="enemy" src="asset/misile.png" alt="">
+  </div>
+
+  <script>
+    const player = $('#player');
+    const enemy = $('#enemy');
+
+    // 점프 상태
+    let isJumping = false;
+
+    // 계속 실행될 함수
+    function onUpdate() {
+      moveEnemy();
+    }
+
+    function moveEnemy() {
+      enemy.css({ left: '-=3px' });
+
+      // 나갔으면 원래 위치로 이동
+      const enemyLeft = pxToInt(enemy.css('left'));
+      if (enemyLeft < -100) {
+        enemyReset();
+      }
+    }
+
+    function enemyReset() {
+      enemy.css({ right: '10px' });
+    }
+
+    function jump() {
+      if (isJumping) {
+        return;
+      }
+
+      isJumping = true;
+      player.animate({ bottom: '+=20px' });
+      player.animate({ bottom: '-=20px' }, function () {
+        isJumping = false;
+      });
+    }
+
+    $(document).keydown(function (event) {
+      switch (event.key) {
+        case ' ':
+          jump();
+          break;
+        default:
+      }
+    });
+
+    // 픽셀 String을 숫자로 변환 : '100px' -> 100
+    function pxToInt(pxStr) {
+      return parseInt(pxStr, 10);
+    }
+
+    // 60프레임짜리 게임
+    setInterval(onUpdate, 1000 / 60)
+  </script>
+</body>
+
+</html>
