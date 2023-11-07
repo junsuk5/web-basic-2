@@ -59,9 +59,14 @@
     function onUpdate() {
       if (!isGameOver) {
         moveEnemy(speed);
+
+        if (onCollisionEnter(player, enemy)) {
+          isGameOver = true;
+        }
       }
     }
 
+    // 충돌 체크
     function onCollisionEnter(rect1, rect2) {
       // 첫 번째 사각형의 위치와 크기 정보 가져오기
       const rect1Left = rect1.offset().left;
@@ -84,7 +89,7 @@
       ) {
         return true; // 충돌
       }
-      
+
       return false; // 충돌하지 않음
     }
 
