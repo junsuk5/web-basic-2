@@ -33,6 +33,13 @@
       right: 10px;
       transform: scaleX(-1);
     }
+
+    #gameOverScene {
+      visibility: hidden;
+      width: 100%;
+      height: 100%;
+      background-color: aqua;
+    }
   </style>
 </head>
 
@@ -41,7 +48,13 @@
   <div id="stage">
     <img id="player" src="asset/mario.png" alt="">
     <img id="enemy" src="asset/misile.png" alt="">
+    <div id="gameOverScene">
+      Game Over
+      <br>
+      <button onclick="gameReset()">재시작</buttonㅊ>
+    </div>
   </div>
+
 
   <script>
     const player = $('#player');
@@ -52,8 +65,8 @@
 
     // 적 스피드
     let speed = 3;
-
     let isGameOver = false;
+    let enemyRespawnTimeout;
 
     // 계속 실행될 함수
     function onUpdate() {
@@ -62,8 +75,26 @@
 
         if (onCollisionEnter(player, enemy)) {
           isGameOver = true;
+
+          // 게임오버 화면 표시
+          $('#gameOverScene').css('visibility', 'visible');
         }
       }
+    }
+
+    // 게임 상태 초기화
+    function gameReset() {
+      isGameOver = false;
+      isJumping = false;
+      speed = 3;
+
+      player.css({ bottom: '10px' });
+      enemy.css({ left: '160px' });
+
+      clearTimeout(enemyRespawnTimeout);
+
+      // 게임오버 화면 없애기
+      $('#gameOverScene').css('visibility', 'hidden');
     }
 
     // 충돌 체크
@@ -110,7 +141,7 @@
       const time = getRandomValue(500, 4000);
 
       // 속도
-      setTimeout(function () {
+      enemyRespawnTimeout = setTimeout(function () {
         speed = getRandomValue(3, 10);
       }, time);
 
