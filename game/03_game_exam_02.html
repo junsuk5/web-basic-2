@@ -11,11 +11,27 @@
     crossorigin="anonymous"></script>
 
   <style>
+    @keyframes scrollBackground {
+      0% {
+        background-position: 0 0;
+        /* 시작 위치 */
+      }
+
+      100% {
+        background-position: 100% 0;
+        /* 끝 위치 */
+      }
+    }
+
     #stage {
       position: relative;
       width: 200px;
       height: 200px;
       border: 1px solid black;
+      background-image: url(asset/super-mario-background.jpg);
+      background-size: auto 100%;
+      background-repeat: repeat-x;
+      animation: scrollBackground 10s linear infinite;
     }
 
     #player {
@@ -74,10 +90,10 @@
         moveEnemy(speed);
 
         if (onCollisionEnter(player, enemy)) {
-          isGameOver = true;
+          // isGameOver = true;
 
           // 게임오버 화면 표시
-          $('#gameOverScene').css('visibility', 'visible');
+          // $('#gameOverScene').css('visibility', 'visible');
         }
       }
     }
