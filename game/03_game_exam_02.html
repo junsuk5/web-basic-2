@@ -90,10 +90,10 @@
         moveEnemy(speed);
 
         if (onCollisionEnter(player, enemy)) {
-          // isGameOver = true;
+          isGameOver = true;
 
           // 게임오버 화면 표시
-          // $('#gameOverScene').css('visibility', 'visible');
+          $('#gameOverScene').css('visibility', 'visible');
         }
       }
     }
