@@ -53,9 +53,39 @@
     // 적 스피드
     let speed = 3;
 
+    let isGameOver = false;
+
     // 계속 실행될 함수
     function onUpdate() {
-      moveEnemy(speed);
+      if (!isGameOver) {
+        moveEnemy(speed);
+      }
+    }
+
+    function onCollisionEnter(rect1, rect2) {
+      // 첫 번째 사각형의 위치와 크기 정보 가져오기
+      const rect1Left = rect1.offset().left;
+      const rect1Top = rect1.offset().top;
+      const rect1Right = rect1Left + rect1.width();
+      const rect1Bottom = rect1Top + rect1.height();
+
+      // 두 번째 사각형의 위치와 크기 정보 가져오기
+      const rect2Left = rect2.offset().left;
+      const rect2Top = rect2.offset().top;
+      const rect2Right = rect2Left + rect2.width();
+      const rect2Bottom = rect2Top + rect2.height();
+
+      // 충돌 검사
+      if (
+        rect1Right >= rect2Left &&
+        rect1Left <= rect2Right &&
+        rect1Bottom >= rect2Top &&
+        rect1Top <= rect2Bottom
+      ) {
+        return true; // 충돌
+      }
+      
+      return false; // 충돌하지 않음
     }
 
     function moveEnemy(speed) {
