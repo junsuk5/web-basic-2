@@ -50,24 +50,42 @@
     // 점프 상태
     let isJumping = false;
 
+    // 적 스피드
+    let speed = 3;
+
     // 계속 실행될 함수
     function onUpdate() {
-      moveEnemy();
+      moveEnemy(speed);
     }
 
-    function moveEnemy() {
-      enemy.css({ left: '-=3px' });
+    function moveEnemy(speed) {
+      enemy.css({ left: `-=${speed}px` });
 
       // 나갔으면 원래 위치로 이동
       const enemyLeft = pxToInt(enemy.css('left'));
-      console.log(enemyLeft);
-      if (enemyLeft < -100) {
+      if (enemyLeft <= -100) {
         enemyReset();
       }
     }
 
     function enemyReset() {
+      speed = 0;
+
+      // 등장 타이밍 조절 500 ~ 4000
+      const time = getRandomValue(500, 4000);
+
+      // 속도
+      setTimeout(function () {
+        speed = getRandomValue(3, 10);
+      }, time);
+
+      console.log('enemyReset');
+
       enemy.css({ left: '250px' });
+    }
+
+    function getRandomValue(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
     function jump() {
