@@ -11,7 +11,7 @@
 
   <style>
     #stage {
-      position: absolute;
+      position: relative;
       width: 200px;
       height: 200px;
       border: 1px solid black;
@@ -29,9 +29,25 @@
   <div id="stage">
     <img id="player" src="asset/mario.png" alt="">
   </div>
+  TIME : <span id="timeText">00:00</span>
 
   <script>
     const player = $('#player');
+    const timeText = $('#timeText');
+
+    let time = 0;
+
+    // 지정시간마다 함수 반복
+    // clearInterval 로 멈출수 있음
+    const timeInterval = setInterval(function () {
+      time++;
+      const minutes = Math.floor((time % 3600) / 60); // 분 계산
+      const seconds = time % 60; // 초 계산
+
+      // 시간, 분, 초를 두 자릿수로 표시하는 문자열 생성
+      const timeString = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+      timeText.text(timeString);
+    }, 1000);
 
     function moveRight() {
       const playerRight = parseInt(player.css('right'), 10);
@@ -70,8 +86,6 @@
     }
 
     $(document).keydown(function (event) {
-      console.log(event.key);
-
       switch (event.key) {
         case 'd':
         case 'ArrowRight':
