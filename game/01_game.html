@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- jquery cdn -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+
+  <style>
+    #div1 {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      background-color: aqua;
+    }
+
+    #hello {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="div1">div1</div>
+  <div id="hello">hello</div>
+  <button id="stopButton">stop</button>
+
+  <script>
+    $('#stopButton').click(function () {
+      $('#hello').stop();
+    });
+
+    $('#hello').animate(
+      { right: '0px' },
+      10000,
+      'linear'
+    );
+
+    $('#div1').animate({ left: '100px' });
+    $('#div1').animate({
+      top: '100px',
+      width: '50px',
+      height: '50px',
+    }, function () {
+      $('#div1').css('backgroundColor', 'red')
+    });
+    $('#div1').animate({ left: '-=50px' });
+    $('#div1').animate({ left: '-=50px' });
+
+    $('#div1').slideUp('fast');
+    $('#div1').slideDown('slow');
+
+    $('#div1').fadeOut(3000);
+    $('#div1').fadeIn(3000);
+
+    $('#div1').hide(3000);
+    $('#div1').show(3000);
+  </script>
+</body>
+
+</html>
