@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- jquery cdn -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+
+  <style>
+    #stage {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+    }
+
+    #player {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="stage">
+    <img id="player" src="asset/mario.png" alt="">
+  </div>
+
+  <script>
+    const player = $('#player');
+
+    function moveRight() {
+      const playerRight = parseInt(player.css('right'), 10);
+      if (playerRight <= 0) {
+        return;
+      }
+
+      player.css({ left: '+=20px' });
+    }
+
+    function moveLeft() {
+      const playerLeft = parseInt(player.css('left'), 10);
+      if (playerLeft <= 0) {
+        return;
+      }
+
+      player.css({ left: '-=20px' });
+    }
+
+    function moveUp() {
+      const playerTop = parseInt(player.css('top'), 10);
+      if (playerTop <= 0) {
+        return;
+      }
+
+      player.css({ top: '-=20px' });
+    }
+
+    function moveDown() {
+      const playerBottom = parseInt(player.css('bottom'), 10);
+      if (playerBottom <= 0) {
+        return;
+      }
+
+      player.css({ top: '+=20px' });
+    }
+
+    $(document).keydown(function (event) {
+      console.log(event.key);
+
+      switch (event.key) {
+        case 'd':
+        case 'ArrowRight':
+          moveRight();
+          break;
+        case 'a':
+        case 'ArrowLeft':
+          moveLeft();
+          break;
+        case 'w':
+        case 'ArrowUp':
+          moveUp();
+          break;
+        case 's':
+        case 'ArrowDown':
+          moveDown();
+          break;
+        default:
+      }
+    });
+  </script>
+</body>
+
+</html>
