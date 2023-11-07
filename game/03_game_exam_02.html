@@ -60,13 +60,14 @@
 
       // 나갔으면 원래 위치로 이동
       const enemyLeft = pxToInt(enemy.css('left'));
+      console.log(enemyLeft);
       if (enemyLeft < -100) {
         enemyReset();
       }
     }
 
     function enemyReset() {
-      enemy.css({ right: '10px' });
+      enemy.css({ left: '250px' });
     }
 
     function jump() {
@@ -75,8 +76,8 @@
       }
 
       isJumping = true;
-      player.animate({ bottom: '+=20px' });
-      player.animate({ bottom: '-=20px' }, function () {
+      player.animate({ bottom: '+=50px' });
+      player.animate({ bottom: '-=50px' }, function () {
         isJumping = false;
       });
     }
