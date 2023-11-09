@@ -19,9 +19,10 @@
 
     function loadDoc() {
       fetch('ajax_info.txt')
-        .then(response => response.text())
-        .then(function (text) {
-          document.getElementById('demo').innerText = text;
+        .then(response => response.json())
+        .then(function (json) {
+          console.log(json);
+          document.getElementById('demo').innerText = json.message;
         });
     }
   </script>
