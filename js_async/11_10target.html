@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1>코멘트</h1>
+
+  <ul id="comments">
+
+  </ul>
+
+  <script>
+    // ? 뗀 쿼리 문자열 : name=홍길동&age=10
+    const queryString = window.location.search.slice(1);
+
+    const queryParams = queryString.split('&');
+    const postId = queryParams[0].split('=')[1];
+
+    fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
+      .then(response => response.json())
+      .then(jsonArray => {
+        jsonArray.forEach(e => {
+          $('#comments').append(`<li>${e.name} : ${e.body}</li>`);
+        });
+      });
+
+  </script>
+</body>
+
+</html>
