@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  09 번 맞다
+
+  <div id="result"></div>
+
+  <script>
+    // ? 뗀 쿼리 문자열 : name=홍길동&age=10
+    const queryString = window.location.search.slice(1);
+
+    const queryParams = queryString.split('&');
+
+    // 결과 json 객체
+    let resultJson = {};
+
+    queryParams.forEach((e) => {
+      // name=홍길동
+      const keyValue = e.split('=');
+      const key = keyValue[0];
+      const value = keyValue[1];
+
+      resultJson[key] = decodeURIComponent(value);
+    });
+
+    console.log(resultJson);
+
+    document.getElementById('result').append(JSON.stringify(resultJson));
+
+  </script>
+</body>
+
+</html>
