@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="title">
+    로딩 중...
+  </div>
+  <div>
+    <span>
+      <img id="photo" src="../game/asset/mario.png" alt="" width="100">
+    </span>
+    <span>
+      <div id="release_date">~~~~~</div>
+      <button id="vote_count">~~~~~</button>
+      <button id="vote_average">~~~~</button>
+    </span>
+  </div>
+  <hr>
+  <div id="overview">
+    로딩 중 ~~~~~~
+  </div>
+
+  <script>
+    const title = $('#title');
+    const photo = $('#photo');
+    const releaseDate = $('#release_date');
+    const voteCount = $('#vote_count');
+    const voteAverage = $('#vote_average');
+    const overview = $('#overview');
+
+    // ? 뗀 쿼리 문자열 : name=홍길동&age=10
+    const queryString = window.location.search.slice(1);
+
+    const queryParams = queryString.split('&');
+    const movieId = queryParams[0].split('=')[1];
+
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=a64533e7ece6c72731da47c9c8bc691f&language=ko-KR&page=1`)
+      .then(response => response.json())
+      .then(movie => {
+        // TODO
+        title.text(movie.title);
+        releaseDate.text(`개봉일 : ${movie.release_date}`);
+        voteCount.text(movie.vote_count);
+        voteAverage.text(movie.vote_average);
+        overview.text(movie.overview);
+
+        photo.attr('src', `https://image.tmdb.org/t/p/w500${movie.poster_path}`);
+      });
+
+  </script>
+</body>
+
+</html>
