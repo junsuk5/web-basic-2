@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  <input id="search" type="text" placeholder="검색어">
   <ul id="list">
     <!-- <li>
       <div>
@@ -22,15 +23,26 @@
   </ul>
 
   <script>
-    async function fetchMovieData() {
-      const response = await fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=a64533e7ece6c72731da47c9c8bc691f&language=ko-KR&page=1');
+    var movies = [];
+    var filteredMovies = [];
 
-      const jsonResult = await response.json();
-      const movies = jsonResult.results;
+    const input = document.getElementById('search');
+    input.addEventListener('input', (event) => {
+      search(event.target.value);
+    });
 
+    function search(query) {
+      filteredMovies = movies.filter((movie) => movie.title.includes(query))
+
+      updateUi(filteredMovies);
+    }
+
+    function updateUi(moviesJson) {
       const list = $('#list');
+      // 모든 자식 삭제
+      list.empty();
 
-      movies.forEach((movie) => {
+      moviesJson.forEach((movie) => {
         list.append(`<li onclick="movePage(${movie.id})">
           <div>
             <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="" width="100">
@@ -40,6 +52,15 @@
           </div>
         </li>`);
       });
+    }
+
+    async function fetchMovieData() {
+      const response = await fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=a64533e7ece6c72731da47c9c8bc691f&language=ko-KR&page=1');
+
+      const jsonResult = await response.json();
+      movies = jsonResult.results;
+
+      updateUi(movies);
     }
 
     function movePage(movieId) {
